@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>QUIZCANO - Category</title>
+
+<style>
+
+/* =========================================================
+SECTION 01
+CATEGORY PAGE CSS
+========================================================= */
+
+*{
+
+margin:0;
+
+padding:0;
+
+box-sizing:border-box;
+
+}
+
+body{
+
+background:#0B1120;
+
+font-family:Arial,Helvetica,sans-serif;
+
+color:#FFFFFF;
+
+}
+
+/* ===========================
+Header
+=========================== */
+
+.category-header{
+
+position:sticky;
+
+top:0;
+
+z-index:1000;
+
+height:70px;
+
+background:#0B1120;
+
+display:flex;
+
+align-items:center;
+
+gap:15px;
+
+padding:0 16px;
+
+border-bottom:1px solid rgba(255,255,255,.08);
+
+}
+
+/* ===========================
+Back Button
+=========================== */
+
+.back-btn{
+
+width:44px;
+
+height:44px;
+
+border:none;
+
+border-radius:50%;
+
+background:#1A2138;
+
+color:#FFFFFF;
+
+font-size:22px;
+
+cursor:pointer;
+
+}
+
+/* ===========================
+Page Title
+=========================== */
+
+.page-title{
+
+font-size:20px;
+
+font-weight:800;
+
+color:#FFFFFF;
+
+}
+
+/* ===========================
+Quiz Container
+=========================== */
+
+.quiz-container{
+
+padding:16px;
+
+display:flex;
+
+flex-direction:column;
+
+gap:14px;
+
+}
+
+/* ===========================
+Quiz Card
+=========================== */
+
+.quiz-card{
+
+display:flex;
+
+align-items:center;
+
+gap:14px;
+
+background:#171C2F;
+
+border-radius:18px;
+
+padding:12px;
+
+border:1px solid rgba(255,255,255,.08);
+
+cursor:pointer;
+
+transition:.25s;
+
+}
+
+.quiz-card:hover{
+
+background:#1E2744;
+
+transform:translateY(-2px);
+
+}
+
+/* ===========================
+Quiz Image
+=========================== */
+
+.quiz-image{
+
+width:70px;
+
+height:70px;
+
+border-radius:14px;
+
+object-fit:cover;
+
+flex-shrink:0;
+
+}
+
+/* ===========================
+Quiz Info
+=========================== */
+
+.quiz-info{
+
+flex:1;
+
+}
+
+.quiz-info h3{
+
+font-size:15px;
+
+margin-bottom:6px;
+
+}
+
+.quiz-info p{
+
+font-size:12px;
+
+color:#9CA3AF;
+
+}
+
+/* ===========================
+Play Button
+=========================== */
+
+.play-btn{
+
+padding:10px 18px;
+
+border:none;
+
+border-radius:10px;
+
+background:#F59E0B;
+
+color:#111111;
+
+font-weight:bold;
+
+cursor:pointer;
+
+}
+
+/* =========================================================
+END OF SECTION 01 CSS
+========================================================= */
+
+</style>
+
+</head>
+
+<body>
+
+<!-- =========================================================
+SECTION 01
+CATEGORY PAGE HTML
+========================================================= -->
+
+<header class="category-header">
+
+<button class="back-btn"
+onclick="history.back()">
+
+←
+
+</button>
+
+<h1 class="page-title"
+id="categoryTitle">
+
+Loading...
+
+</h1>
+
+</header>
+
+<div class="quiz-container"
+id="quizContainer">
+
+</div>
+
+<!-- =========================================================
+END OF SECTION 01 HTML
+========================================================= -->
+
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+
+import {
+    getFirestore,
+    collection,
+    query,
+    where,
+    getDocs
+} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+
+/* =========================================================
+SECTION 02
+FIREBASE CONFIG
+========================================================= */
+
+const firebaseConfig = {
+
+    apiKey: "AIzaSyAnMxqDpdzgKEW1vkRSrLysT-0nu_vEf8Q",
+
+    authDomain: "quizcano.firebaseapp.com",
+
+    projectId: "quizcano",
+
+    storageBucket: "quizcano.firebasestorage.app",
+
+    messagingSenderId: "834135771491",
+
+    appId: "1:834135771491:web:c9998944df72d14a7b2b56"
+
+};
+
+const app = initializeApp(firebaseConfig);
+
+const db = getFirestore(app);
+
+/* =========================================================
+GET CATEGORY
+========================================================= */
+
+const params = new URLSearchParams(window.location.search);
+
+const categoryId = params.get("subcategoryId");
+const categoryName = params.get("name");
+
+document.getElementById("categoryTitle").textContent =
+categoryName || "Quizzes";
+
+/* =========================================================
+LOAD QUIZZES
+========================================================= */
+
+async function loadQuizzes(){
+
+    const quizContainer =
+    document.getElementById("quizContainer");
+
+    quizContainer.innerHTML = "";
+
+    try{
+
+   const q = query(
+    collection(db,"quizzes"),
+    where("subCategoryId","==",categoryId)
+);
+        const snapshot = await getDocs(q);
+        console.log("Quizzes found:", snapshot.size);
+
+        if(snapshot.empty){
+
+            quizContainer.innerHTML =
+            "<p style='text-align:center;padding:30px;'>No quizzes found.</p>";
+
+            return;
+
+        }
+
+        quizContainer.innerHTML = "";
+
+        snapshot.forEach((docItem)=>{
+
+            const quiz = docItem.data();
+
+            const image =
+            quiz.questions &&
+            quiz.questions.length>0
+            ? quiz.questions[0].image
+            : "";
+
+            quizContainer.innerHTML += `
+
+            <div class="quiz-card"
+            onclick="window.location.href='quiz.html?id=${docItem.id}'">
+
+                <img
+                class="quiz-image"
+                src="${image}"
+                alt="${quiz.title}">
+
+                <div class="quiz-info">
+
+                    <h3>${quiz.title}</h3>
+
+                    <p>${quiz.totalQuestions} Questions</p>
+
+                </div>
+
+                <button class="play-btn">
+
+                    PLAY
+
+                </button>
+
+            </div>
+
+            `;
+
+        });
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+        quizContainer.innerHTML =
+        "<p style='text-align:center;padding:30px;'>Failed to load quizzes.</p>";
+
+    }
+
+}
+
+loadQuizzes();
+
+</script>
+   
+  
+</body>
+
+</html>
