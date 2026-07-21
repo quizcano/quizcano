@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>QUIZCANO - Quiz Result</title>
+
+<style>
+ /* =========================================================
+SECTION 01
+RESULT PAGE CSS
+========================================================= */
+
+/* ===========================
+Reset
+=========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#0B1120;
+    font-family:Arial,Helvetica,sans-serif;
+    color:#FFFFFF;
+}
+
+/* ===========================
+Header
+=========================== */
+
+.result-header{
+    width:100%;
+    padding:25px 20px;
+    text-align:center;
+}
+
+/* ===========================
+Logo
+=========================== */
+
+.logo{
+    font-size:34px;
+    font-weight:900;
+}
+
+.logo span:first-child{
+    color:#FFFFFF;
+}
+
+.logo span:last-child{
+    color:#F59E0B;
+}
+
+/* ===========================
+Tagline
+=========================== */
+
+.tagline{
+    margin-top:6px;
+    font-size:13px;
+    color:#8B93A7;
+}
+
+/* ===========================
+Result Card
+=========================== */
+
+.result-card{
+    width:92%;
+    max-width:520px;
+    margin:20px auto;
+    background:#111827;
+    border:2px solid #F59E0B;
+    border-radius:16px;
+    padding:25px;
+    text-align:center;
+    box-shadow:0 10px 35px rgba(0,0,0,.35);
+}
+
+/* ===========================
+Trophy
+=========================== */
+
+.result-icon{
+    font-size:72px;
+    margin-bottom:15px;
+}
+
+/* ===========================
+Title
+=========================== */
+
+.result-title{
+    font-size:28px;
+    font-weight:800;
+    margin-bottom:18px;
+}
+
+/* ===========================
+Score
+=========================== */
+
+.score{
+    font-size:50px;
+    font-weight:900;
+    color:#F59E0B;
+}
+
+/* ===========================
+Percentage Badge
+=========================== */
+
+.percentage-badge{
+    display:inline-block;
+    margin-top:15px;
+    padding:10px 24px;
+    background:#F59E0B;
+    color:#FFFFFF;
+    font-size:28px;
+    font-weight:900;
+    border-radius:50px;
+}
+
+/* ===========================
+Star Rating
+=========================== */
+
+.star-rating{
+    margin-top:18px;
+    font-size:34px;
+    color:#FFD54A;
+    letter-spacing:4px;
+}
+
+/* ===========================
+Achievement
+=========================== */
+
+.achievement-title{
+    margin-top:18px;
+    font-size:24px;
+    font-weight:900;
+    color:#22C55E;
+}
+
+/* ===========================
+Summary
+=========================== */
+
+.summary{
+    margin-top:18px;
+    font-size:17px;
+    line-height:1.7;
+    color:#D1D5DB;
+}
+
+/* ===========================
+Statistics
+=========================== */
+
+.stats-container{
+    margin-top:30px;
+    border-top:1px solid #273247;
+    padding-top:18px;
+}
+
+.stat-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:14px 0;
+    border-bottom:1px solid #1E293B;
+    font-size:17px;
+}
+
+.stat-row:last-child{
+    border-bottom:none;
+}
+
+.stat-row span:first-child{
+    color:#D1D5DB;
+}
+
+.stat-row span:last-child{
+    color:#F59E0B;
+    font-weight:800;
+}
+
+/* ===========================
+Progress Bar
+=========================== */
+
+.result-progress{
+    width:100%;
+    height:14px;
+    margin-top:25px;
+    background:#1A2138;
+    border-radius:50px;
+    overflow:hidden;
+}
+
+#resultProgressFill{
+    width:0%;
+    height:100%;
+    border-radius:50px;
+    background:linear-gradient(
+        90deg,
+        #22C55E,
+        #F59E0B
+    );
+    transition:width 1.5s ease;
+}
+
+/* ===========================
+Review Section
+=========================== */
+
+.review-section{
+    width:92%;
+    max-width:520px;
+    margin:25px auto 40px;
+}
+
+/* ===========================
+Responsive
+=========================== */
+
+@media(max-width:480px){
+
+    .score{
+        font-size:42px;
+    }
+
+    .result-title{
+        font-size:24px;
+    }
+
+    .achievement-title{
+        font-size:21px;
+    }
+
+    .stat-row{
+        font-size:16px;
+    }
+
+}
+    
+/* ===========================
+Review Card
+=========================== */
+
+.review-card{
+
+    background:#111827;
+
+    border:2px solid #1F2937;
+
+    border-radius:14px;
+
+    padding:18px;
+
+    margin-bottom:20px;
+
+    transition:.3s;
+
+}
+
+.review-card:hover{
+
+    border-color:#F59E0B;
+
+}
+
+/* ===========================
+Review Title
+=========================== */
+
+.review-card h3{
+
+    font-size:20px;
+
+    color:#F59E0B;
+
+    margin-bottom:15px;
+
+}
+
+/* ===========================
+Review Image
+=========================== */
+
+.review-image{
+
+    width:100%;
+
+    border-radius:12px;
+
+    display:block;
+
+    margin-bottom:15px;
+
+    background:#1A2138;
+
+}
+
+/* ===========================
+Review Answer
+=========================== */
+
+.review-answer{
+
+    margin-top:10px;
+
+    padding:12px;
+
+    background:#1A2138;
+
+    border-radius:10px;
+
+    font-size:16px;
+
+    color:#FFFFFF;
+
+    line-height:1.6;
+
+}
+
+.review-answer strong{
+
+    color:#F59E0B;
+
+}
+    
+/* =========================================================
+END OF SECTION 01
+========================================================= */
+/* =========================================================
+SECTION 05
+SHARE BUTTON
+========================================================= */
+
+.share-section{
+
+    width:92%;
+
+    max-width:520px;
+
+    margin:20px auto 40px;
+
+}
+
+#shareButton{
+
+    width:100%;
+
+    height:55px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:#F59E0B;
+
+    color:#FFFFFF;
+
+    font-size:18px;
+
+    font-weight:800;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+#shareButton:hover{
+
+    background:#E48A00;
+
+}
+
+#shareButton:active{
+
+    transform:scale(.98);
+
+}
+
+/* =========================================================
+END OF SECTION 05
+========================================================= */
+    
+</style>
+
+</head>
+
+<body>
+
+<!-- =========================================================
+SECTION 01
+RESULT PAGE HTML
+========================================================= -->
+
+<header class="result-header">
+
+    <h1 class="logo">
+
+        <span>QUIZ</span><span>CANO</span>
+
+    </h1>
+
+    <p class="tagline">
+
+        Play • Learn • Win
+
+    </p>
+
+</header>
+
+<div class="result-card">
+
+    <div
+    class="result-icon"
+    id="resultIcon">
+
+        🏆
+
+    </div>
+
+    <h2 class="result-title">
+
+        Quiz Completed!
+
+    </h2>
+
+    <div
+    class="score"
+    id="scoreText">
+
+        0 / 0
+
+    </div>
+
+    <div
+    class="percentage-badge"
+    id="percentageBadge">
+
+        0%
+
+    </div>
+
+    <div
+    class="star-rating"
+    id="starRating">
+
+        ☆☆☆☆☆
+
+    </div>
+
+    <div
+    class="achievement-title"
+    id="achievementTitle">
+
+        Loading...
+
+    </div>
+
+    <div
+    class="summary"
+    id="summaryText">
+
+        Loading your results...
+
+    </div>
+
+    <!-- ===========================
+    Performance Statistics
+    =========================== -->
+
+    <div class="stats-container">
+
+        <div class="stat-row">
+
+            <span>🎯 Accuracy</span>
+
+            <span id="accuracyValue">0%</span>
+
+        </div>
+
+        <div class="stat-row">
+
+            <span>✅ Correct</span>
+
+            <span id="correctValue">0</span>
+
+        </div>
+
+        <div class="stat-row">
+
+            <span>❌ Wrong</span>
+
+            <span id="wrongValue">0</span>
+
+        </div>
+
+        <div class="stat-row">
+
+            <span>⚡ Average Time</span>
+
+            <span id="averageTime">0 sec</span>
+
+        </div>
+
+        <div class="stat-row">
+
+            <span>🚀 Fastest</span>
+
+            <span id="fastestTime">0 sec</span>
+
+        </div>
+
+        <div class="stat-row">
+
+            <span>🐢 Slowest</span>
+
+            <span id="slowestTime">0 sec</span>
+
+        </div>
+
+        <div class="stat-row">
+
+            <span>⏱ Total Time</span>
+
+            <span id="totalTime">0 sec</span>
+
+        </div>
+
+    </div>
+
+    <!-- ===========================
+    Progress Bar
+    =========================== -->
+
+    <div class="result-progress">
+
+        <div
+        id="resultProgressFill">
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ===========================
+Question Review
+=========================== -->
+
+<div
+class="review-section"
+id="reviewSection">
+
+</div>
+<!-- =========================================================
+END OF SECTION 01 HTML
+========================================================= -->
+<!-- =========================================================
+SECTION 05
+SHARE SCORE BUTTON
+========================================================= -->
+
+<div class="share-section">
+
+    <button id="shareButton">
+
+        📤 Share My Score
+
+    </button>
+
+</div>
+
+<!-- =========================================================
+END OF SECTION 05
+========================================================= -->
+<script>
+/* =========================================================
+SECTION 02
+LOAD QUIZ RESULT
+========================================================= */
+
+/* ===========================
+Load Saved Result
+=========================== */
+
+const quizResult =
+JSON.parse(
+localStorage.getItem("quizResult")
+);
+
+/* ===========================
+Check Result
+=========================== */
+
+if(!quizResult){
+
+    alert("No quiz result found.");
+
+    window.location.href = "index.html";
+
+}
+
+/* ===========================
+Display Score
+=========================== */
+
+document.getElementById("scoreText").textContent =
+quizResult.score + " / " + quizResult.total;
+
+/* ===========================
+Summary Message
+=========================== */
+
+document.getElementById("summaryText").innerHTML =
+"🎉 Great job completing this quiz!";
+
+/* ===========================
+Statistics
+=========================== */
+
+document.getElementById("accuracyValue").textContent =
+quizResult.percentage + "%";
+
+document.getElementById("correctValue").textContent =
+quizResult.score;
+
+document.getElementById("wrongValue").textContent =
+quizResult.total - quizResult.score;
+
+/* ===========================
+Performance Statistics
+=========================== */
+
+document.getElementById("averageTime").textContent =
+quizResult.averageTime + " sec";
+
+document.getElementById("fastestTime").textContent =
+quizResult.fastestTime + " sec";
+
+document.getElementById("slowestTime").textContent =
+quizResult.slowestTime + " sec";
+
+document.getElementById("totalTime").textContent =
+quizResult.totalTime + " sec";
+
+/* ===========================
+Animated Progress Bar
+=========================== */
+
+setTimeout(()=>{
+
+    document.getElementById("resultProgressFill").style.width =
+    quizResult.percentage + "%";
+
+},300);
+
+/* ===========================
+Percentage Badge
+=========================== */
+
+document.getElementById("percentageBadge").textContent =
+quizResult.percentage + "%";
+
+/* ===========================
+Star Rating
+=========================== */
+
+let stars = "";
+
+if(quizResult.percentage >= 90){
+
+    stars = "★★★★★";
+
+}
+else if(quizResult.percentage >= 80){
+
+    stars = "★★★★☆";
+
+}
+else if(quizResult.percentage >= 60){
+
+    stars = "★★★☆☆";
+
+}
+else if(quizResult.percentage >= 40){
+
+    stars = "★★☆☆☆";
+
+}
+else{
+
+    stars = "★☆☆☆☆";
+
+}
+
+document.getElementById("starRating").textContent =
+stars;
+
+/* ===========================
+Achievement Badge
+=========================== */
+
+let badge = "";
+
+if(quizResult.percentage >= 90){
+
+    badge = "🏆 QUIZ MASTER";
+
+}
+else if(quizResult.percentage >= 80){
+
+    badge = "🥇 EXCELLENT";
+
+}
+else if(quizResult.percentage >= 60){
+
+    badge = "🎯 GREAT JOB";
+
+}
+else if(quizResult.percentage >= 40){
+
+    badge = "💪 KEEP PRACTICING";
+
+}
+else{
+
+    badge = "🔥 NEVER GIVE UP";
+
+}
+
+document.getElementById("achievementTitle").textContent =
+badge;
+
+/* ===========================
+Question Review
+=========================== */
+
+let reviewHTML = "";
+
+quizResult.questions.forEach((question,index)=>{
+
+    const userAnswer =
+    quizResult.userAnswers[index] || "Not Answered";
+
+    const correctAnswer =
+    question.correctAnswer;
+
+    const isCorrect =
+    userAnswer === correctAnswer;
+
+    reviewHTML += `
+
+    <div class="review-card ${isCorrect ? 'correct-card' : 'wrong-card'}">
+
+        <h3>
+
+            Question ${index+1}
+
+        </h3>
+
+        <img
+        src="${question.questionImage}"
+        class="review-image">
+
+        <div class="review-answer">
+
+            <strong>Your Answer:</strong>
+
+            ${userAnswer}
+
+            ${isCorrect ? "✅" : "❌"}
+
+        </div>
+
+        <div class="review-answer">
+
+            <strong>Correct Answer:</strong>
+
+            ${correctAnswer}
+
+        </div>
+
+        <div class="review-answer">
+
+            <strong>⏱ Time Used:</strong>
+
+            ${quizResult.questionTimes ? quizResult.questionTimes[index] : 0} sec
+
+        </div>
+
+    </div>
+
+    `;
+
+});
+
+document.getElementById("reviewSection").innerHTML =
+reviewHTML;
+
+/* =========================================================
+END OF SECTION 02
+========================================================= */
+
+
+/* =========================================================
+SECTION 05
+SHARE SCORE
+========================================================= */
+
+const shareButton =
+document.getElementById("shareButton");
+
+shareButton.addEventListener("click",async()=>{
+
+    const shareText =
+
+`🏆 I scored ${quizResult.score}/${quizResult.total} (${quizResult.percentage}%)
+with an average answer time of ${quizResult.averageTime} seconds
+on QUIZCANO!
+
+Can you beat my score?
+
+Play now:
+https://github.com/davidsggswilliams89-code/quizcano`;
+
+    if(navigator.share){
+
+        try{
+
+            await navigator.share({
+
+                title:"QUIZCANO",
+
+                text:shareText
+
+            });
+
+        }catch(error){
+
+            console.log("Share cancelled.");
+
+        }
+
+    }else{
+
+        navigator.clipboard.writeText(shareText);
+
+        alert("Score copied to clipboard!");
+
+    }
+
+});
+
+/* =========================================================
+END OF SECTION 05
+========================================================= */
+
+</script>
+</body>
+
+</html>
