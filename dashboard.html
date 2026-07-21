@@ -1,0 +1,3062 @@
+aa<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width,initial-scale=1.0">
+
+<title>QUIZCANO Admin Dashboard</title>
+
+<style>
+
+/* =========================================================
+SECTION 01
+HEADER CSS
+========================================================= */
+
+/* Reset */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+
+background:#0B1120;
+
+font-family:Arial,Helvetica,sans-serif;
+
+color:#FFFFFF;
+
+}
+
+/* Header */
+
+.dashboard-header{
+
+width:100%;
+
+padding:60px 20px 40px;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+text-align:center;
+
+}
+
+/* Wrapper */
+
+.dashboard-header-content{
+
+width:100%;
+
+max-width:700px;
+
+}
+
+/* Logo */
+
+.dashboard-logo{
+
+font-size:46px;
+
+font-weight:900;
+
+letter-spacing:1px;
+
+}
+
+.logo-white{
+
+color:#FFFFFF;
+
+}
+
+.logo-orange{
+
+color:#F59E0B;
+
+}
+
+/* Title */
+
+.dashboard-title{
+
+margin-top:18px;
+
+font-size:32px;
+
+font-weight:800;
+
+}
+
+/* Description */
+
+.dashboard-description{
+
+margin-top:15px;
+
+font-size:16px;
+
+line-height:1.7;
+
+color:#9CA3AF;
+
+}
+
+/* =========================================================
+END OF SECTION 01 CSS
+========================================================= */
+/* =========================================================
+SECTION 02
+ADMIN MENU CSS
+========================================================= */
+
+.dashboard-menu-section{
+
+width:100%;
+
+max-width:1000px;
+
+margin:0 auto;
+
+padding:0 20px 40px;
+
+}
+
+.dashboard-menu-grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
+gap:20px;
+
+}
+
+.dashboard-menu-card{
+
+background:#111827;
+
+border:2px solid #1F2937;
+
+border-radius:20px;
+
+padding:28px 20px;
+
+text-align:center;
+
+cursor:pointer;
+
+transition:.25s;
+
+}
+
+.dashboard-menu-card:hover{
+
+border-color:#F59E0B;
+
+transform:translateY(-5px);
+
+box-shadow:0 12px 28px rgba(245,158,11,.18);
+
+}
+
+.dashboard-menu-card:active{
+
+transform:scale(.98);
+
+}
+
+.dashboard-menu-icon{
+
+font-size:46px;
+
+margin-bottom:15px;
+
+}
+
+.dashboard-menu-title{
+
+font-size:20px;
+
+font-weight:800;
+
+margin-bottom:10px;
+
+color:#FFFFFF;
+
+}
+
+.dashboard-menu-description{
+
+font-size:15px;
+
+line-height:1.6;
+
+color:#9CA3AF;
+
+}
+
+/* =========================================================
+END OF SECTION 02 CSS
+========================================================= */
+/* =========================================================
+SECTION 03
+CREATE SUB CATEGORY CSS
+========================================================= */
+
+.createSubCategorySection{
+
+display:none;
+
+width:100%;
+
+max-width:750px;
+
+margin:30px auto;
+
+padding:28px;
+
+background:#111827;
+
+border:2px solid #1F2937;
+
+border-radius:20px;
+
+}
+
+.createSubCategorySection.show{
+
+display:block;
+
+}
+
+.sectionTitle{
+
+font-size:28px;
+
+font-weight:800;
+
+text-align:center;
+
+margin-bottom:25px;
+
+}
+
+.formLabel{
+
+display:block;
+
+margin-bottom:10px;
+
+font-size:15px;
+
+font-weight:700;
+
+color:#FFFFFF;
+
+}
+
+.formInput{
+
+width:100%;
+
+height:56px;
+
+padding:0 16px;
+
+margin-bottom:20px;
+
+border:2px solid #1F2937;
+
+border-radius:12px;
+
+background:#0B1120;
+
+color:#FFFFFF;
+
+font-size:16px;
+
+outline:none;
+
+}
+
+.formInput:focus{
+
+border-color:#F59E0B;
+
+}
+
+input[type=file].formInput{
+
+height:auto;
+
+padding:14px;
+
+}
+
+.bannerPreviewContainer{
+
+width:100%;
+
+height:220px;
+
+border:2px dashed #374151;
+
+border-radius:14px;
+
+overflow:hidden;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+background:#0B1120;
+
+margin-bottom:22px;
+
+}
+
+.bannerPreviewImage{
+
+width:100%;
+
+height:100%;
+
+object-fit:cover;
+
+display:none;
+
+}
+
+.bannerPreviewText{
+
+color:#9CA3AF;
+
+font-size:15px;
+
+}
+
+.primaryButton{
+
+width:100%;
+
+height:58px;
+
+border:none;
+
+border-radius:14px;
+
+background:#F59E0B;
+
+color:#FFFFFF;
+
+font-size:18px;
+
+font-weight:800;
+
+cursor:pointer;
+
+}
+
+.primaryButton:hover{
+
+opacity:.95;
+
+}
+
+/* =========================================================
+END OF SECTION 03 CSS
+========================================================= */
+/* =========================================================
+SECTION 04
+MANAGE SUB CATEGORIES CSS
+========================================================= */
+
+.manageSubCategorySection{
+
+display:none;
+
+width:100%;
+
+max-width:1100px;
+
+margin:30px auto;
+
+padding:28px;
+
+background:#111827;
+
+border:2px solid #1F2937;
+
+border-radius:20px;
+
+}
+
+.manageSubCategorySection.show{
+
+display:block;
+
+}
+
+.manageTitle{
+
+font-size:28px;
+
+font-weight:800;
+
+text-align:center;
+
+margin-bottom:25px;
+
+}
+
+.manageGrid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+
+gap:22px;
+
+}
+
+.subCategoryCard{
+
+background:#0B1120;
+
+border:2px solid #1F2937;
+
+border-radius:18px;
+
+overflow:hidden;
+
+}
+
+.subCategoryBanner{
+
+width:100%;
+
+height:170px;
+
+object-fit:cover;
+
+display:block;
+
+}
+
+.subCategoryBody{
+
+padding:18px;
+
+}
+
+.parentCategoryText{
+
+font-size:13px;
+
+color:#F59E0B;
+
+font-weight:700;
+
+margin-bottom:8px;
+
+}
+
+.subCategoryTitle{
+
+font-size:20px;
+
+font-weight:800;
+
+margin-bottom:18px;
+
+}
+
+.subCategoryButtons{
+
+display:flex;
+
+gap:12px;
+
+}
+
+.editSubCategoryButton{
+
+flex:1;
+
+height:44px;
+
+border:none;
+
+border-radius:10px;
+
+background:#2563EB;
+
+color:#FFFFFF;
+
+font-weight:700;
+
+cursor:pointer;
+
+}
+
+.deleteSubCategoryButton{
+
+flex:1;
+
+height:44px;
+
+border:none;
+
+border-radius:10px;
+
+background:#DC2626;
+
+color:#FFFFFF;
+
+font-weight:700;
+
+cursor:pointer;
+
+}
+
+/* =========================================================
+END OF SECTION 04 CSS
+========================================================= */
+/* =========================================================
+SECTION 05
+CREATE QUIZ CSS
+========================================================= */
+
+.createQuizSection{
+
+display:none;
+
+width:100%;
+
+max-width:800px;
+
+margin:30px auto;
+
+padding:28px;
+
+background:#111827;
+
+border:2px solid #1F2937;
+
+border-radius:20px;
+
+}
+
+.createQuizSection.show{
+
+display:block;
+
+}
+
+.quizSectionTitle{
+
+font-size:28px;
+
+font-weight:800;
+
+text-align:center;
+
+margin-bottom:25px;
+
+}
+
+.quizLabel{
+
+display:block;
+
+margin-bottom:10px;
+
+font-size:15px;
+
+font-weight:700;
+
+color:#FFFFFF;
+
+}
+
+.quizInput{
+
+width:100%;
+
+height:56px;
+
+padding:0 16px;
+
+margin-bottom:20px;
+
+border:2px solid #1F2937;
+
+border-radius:12px;
+
+background:#0B1120;
+
+color:#FFFFFF;
+
+font-size:16px;
+
+outline:none;
+
+}
+
+.quizInput:focus{
+
+border-color:#F59E0B;
+
+}
+
+input[type=file].quizInput{
+
+height:auto;
+
+padding:14px;
+
+}
+
+.questionTitle{
+
+font-size:22px;
+
+font-weight:800;
+
+text-align:center;
+
+margin-bottom:25px;
+
+color:#F59E0B;
+
+}
+
+.questionPreviewContainer{
+
+width:100%;
+
+height:260px;
+
+border:2px dashed #374151;
+
+border-radius:16px;
+
+background:#0B1120;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+overflow:hidden;
+
+margin-bottom:22px;
+
+}
+
+.questionPreviewImage{
+
+width:100%;
+
+height:100%;
+
+object-fit:contain;
+
+display:none;
+
+}
+
+.questionPreviewText{
+
+font-size:15px;
+
+color:#9CA3AF;
+
+}
+
+.quizButton{
+
+width:100%;
+
+height:58px;
+
+border:none;
+
+border-radius:14px;
+
+background:#F59E0B;
+
+color:#FFFFFF;
+
+font-size:18px;
+
+font-weight:800;
+
+cursor:pointer;
+
+margin-top:10px;
+
+}
+
+.quizButton:hover{
+
+opacity:.95;
+
+}
+
+/* =========================================================
+END OF SECTION 05 CSS
+========================================================= */
+/* =========================================================
+SECTION 06
+MANAGE QUIZZES CSS
+========================================================= */
+
+.manageQuizSection{
+
+display:none;
+
+width:100%;
+
+max-width:1100px;
+
+margin:30px auto;
+
+padding:28px;
+
+background:#111827;
+
+border:2px solid #1F2937;
+
+border-radius:20px;
+
+}
+
+.manageQuizSection.show{
+
+display:block;
+
+}
+
+.manageQuizTitle{
+
+font-size:28px;
+
+font-weight:800;
+
+text-align:center;
+
+margin-bottom:25px;
+
+}
+
+.filterGrid{
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:18px;
+
+margin-bottom:25px;
+
+}
+
+.manageQuizInput{
+
+width:100%;
+
+height:56px;
+
+padding:0 16px;
+
+border:2px solid #1F2937;
+
+border-radius:12px;
+
+background:#0B1120;
+
+color:#FFFFFF;
+
+font-size:16px;
+
+outline:none;
+
+}
+
+.manageQuizInput:focus{
+
+border-color:#F59E0B;
+
+}
+
+.quizGrid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+
+gap:22px;
+
+}
+
+.quizCard{
+
+background:#0B1120;
+
+border:2px solid #1F2937;
+
+border-radius:18px;
+
+overflow:hidden;
+
+}
+
+.quizCardImage{
+
+width:100%;
+
+height:180px;
+
+object-fit:contain;
+
+background:#000000;
+
+}
+
+.quizCardBody{
+
+padding:18px;
+
+}
+
+.quizCardTitle{
+
+font-size:20px;
+
+font-weight:800;
+
+margin-bottom:12px;
+
+}
+
+.quizCardInfo{
+
+font-size:15px;
+
+color:#9CA3AF;
+
+margin-bottom:18px;
+
+}
+
+.quizCardButtons{
+
+display:flex;
+
+gap:12px;
+
+}
+
+.editQuizButton{
+
+flex:1;
+
+height:44px;
+
+border:none;
+
+border-radius:10px;
+
+background:#2563EB;
+
+color:#FFFFFF;
+
+font-weight:700;
+
+cursor:pointer;
+
+}
+
+.deleteQuizButton{
+
+flex:1;
+
+height:44px;
+
+border:none;
+
+border-radius:10px;
+
+background:#DC2626;
+
+color:#FFFFFF;
+
+font-weight:700;
+
+cursor:pointer;
+
+}
+
+/* =========================================================
+END OF SECTION 06 CSS
+========================================================= */
+/* =========================================================
+SECTION 07
+LOGOUT CSS
+========================================================= */
+
+.logoutSection{
+
+display:none;
+
+width:100%;
+
+max-width:600px;
+
+margin:40px auto;
+
+padding:30px;
+
+background:#111827;
+
+border:2px solid #1F2937;
+
+border-radius:20px;
+
+text-align:center;
+
+}
+
+.logoutSection.show{
+
+display:block;
+
+}
+
+.logoutTitle{
+
+font-size:28px;
+
+font-weight:800;
+
+margin-bottom:15px;
+
+}
+
+.logoutDescription{
+
+font-size:16px;
+
+line-height:1.7;
+
+color:#9CA3AF;
+
+margin-bottom:30px;
+
+}
+
+.logoutButtons{
+
+display:flex;
+
+gap:15px;
+
+justify-content:center;
+
+}
+
+.cancelLogoutButton{
+
+flex:1;
+
+height:56px;
+
+border:none;
+
+border-radius:12px;
+
+background:#374151;
+
+color:#FFFFFF;
+
+font-size:17px;
+
+font-weight:700;
+
+cursor:pointer;
+
+}
+
+.confirmLogoutButton{
+
+flex:1;
+
+height:56px;
+
+border:none;
+
+border-radius:12px;
+
+background:#DC2626;
+
+color:#FFFFFF;
+
+font-size:17px;
+
+font-weight:700;
+
+cursor:pointer;
+
+}
+
+/* =========================================================
+END OF SECTION 07 CSS
+========================================================= */
+  
+
+</style>
+
+</head>
+
+<body>
+
+<!-- =========================================================
+SECTION 01
+HEADER HTML
+========================================================= -->
+
+<header class="dashboard-header">
+
+<div class="dashboard-header-content">
+
+<h1 class="dashboard-logo">
+
+<span class="logo-white">QUIZ</span><span class="logo-orange">CANO</span>
+
+</h1>
+
+<h2 class="dashboard-title">
+
+Admin Dashboard
+
+</h2>
+
+<p class="dashboard-description">
+
+Manage Quizcano from one powerful dashboard.<br>
+
+Create sub categories, quizzes and manage everything from one place.
+
+</p>
+
+</div>
+
+</header>
+
+<!-- =========================================================
+END OF SECTION 01 HTML
+========================================================= -->
+<!-- =========================================================
+SECTION 02
+ADMIN MENU HTML
+========================================================= -->
+
+<section class="dashboard-menu-section">
+
+<div class="dashboard-menu-grid">
+
+<button
+id="createSubCategoryButton"
+class="dashboard-menu-card">
+
+<div class="dashboard-menu-icon">
+
+📁
+
+</div>
+
+<h3 class="dashboard-menu-title">
+
+Create Sub Category
+
+</h3>
+
+<p class="dashboard-menu-description">
+
+Create a new sub category under Daily Challenges, Quiz Category or Popular Quiz.
+
+</p>
+
+</button>
+
+
+<button
+id="manageSubCategoryButton"
+class="dashboard-menu-card">
+
+<div class="dashboard-menu-icon">
+
+🗂️
+
+</div>
+
+<h3 class="dashboard-menu-title">
+
+Manage Sub Categories
+
+</h3>
+
+<p class="dashboard-menu-description">
+
+Edit banners, rename or delete existing sub categories.
+
+</p>
+
+</button>
+
+
+<button
+id="createQuizButton"
+class="dashboard-menu-card">
+
+<div class="dashboard-menu-icon">
+
+➕
+
+</div>
+
+<h3 class="dashboard-menu-title">
+
+Create Quiz
+
+</h3>
+
+<p class="dashboard-menu-description">
+
+Create quizzes inside any existing sub category.
+
+</p>
+
+</button>
+
+
+<button
+id="manageQuizButton"
+class="dashboard-menu-card">
+
+<div class="dashboard-menu-icon">
+
+📝
+
+</div>
+
+<h3 class="dashboard-menu-title">
+
+Manage Quizzes
+
+</h3>
+
+<p class="dashboard-menu-description">
+
+Filter quizzes by Mother Category then Sub Category.
+
+</p>
+
+</button>
+
+
+<button
+id="logoutButton"
+class="dashboard-menu-card">
+
+<div class="dashboard-menu-icon">
+
+🚪
+
+</div>
+
+<h3 class="dashboard-menu-title">
+
+Logout
+
+</h3>
+
+<p class="dashboard-menu-description">
+
+Securely sign out from the admin dashboard.
+
+</p>
+
+</button>
+
+</div>
+
+</section>
+
+<!-- =========================================================
+END OF SECTION 02 HTML
+========================================================= -->
+<!-- =========================================================
+SECTION 03
+CREATE SUB CATEGORY HTML
+========================================================= -->
+
+<section
+id="createSubCategorySection"
+class="createSubCategorySection">
+
+<h2 class="sectionTitle">
+
+Create Sub Category
+
+</h2>
+
+<label class="formLabel">
+
+Mother Category
+
+</label>
+
+<select
+id="motherCategory"
+class="formInput">
+
+<option value="">
+
+Select Mother Category
+
+</option>
+
+<option value="dailyChallenge">
+
+Daily Challenges
+
+</option>
+
+<option value="quizCategory">
+
+Quiz Category
+
+</option>
+
+<option value="popularQuiz">
+
+Popular Quiz
+
+</option>
+
+</select>
+
+<label class="formLabel">
+
+Sub Category Name
+
+</label>
+
+<input
+type="text"
+id="subCategoryName"
+class="formInput"
+placeholder="Example : Football">
+
+<label class="formLabel">
+
+Banner Image
+
+</label>
+
+<input
+type="file"
+id="subCategoryBanner"
+class="formInput"
+accept="image/*">
+
+<div class="bannerPreviewContainer">
+
+<img
+id="bannerPreviewImage"
+class="bannerPreviewImage">
+
+<p
+id="bannerPreviewText"
+class="bannerPreviewText">
+
+No Banner Selected
+
+</p>
+
+</div>
+
+<button
+id="saveSubCategoryButton"
+class="primaryButton">
+
+Save Sub Category
+
+</button>
+
+</section>
+
+<!-- =========================================================
+END OF SECTION 03 HTML
+========================================================= -->
+<!-- =========================================================
+SECTION 04
+MANAGE SUB CATEGORIES HTML
+========================================================= -->
+
+<section
+id="manageSubCategorySection"
+class="manageSubCategorySection">
+
+<h2 class="manageTitle">
+
+Manage Sub Categories
+
+</h2>
+
+<div
+id="manageGrid"
+class="manageGrid">
+
+</div>
+
+</section>
+
+<!-- =========================================================
+END OF SECTION 04 HTML
+========================================================= -->
+<!-- =========================================================
+SECTION 05
+CREATE QUIZ HTML
+========================================================= -->
+
+<section
+id="createQuizSection"
+class="createQuizSection">
+
+<h2 class="quizSectionTitle">
+
+Create Quiz
+
+</h2>
+
+<label class="quizLabel">
+
+Mother Category
+
+</label>
+
+<select
+id="quizMotherCategory"
+class="quizInput">
+
+<option value="">
+
+Select Mother Category
+
+</option>
+
+<option value="dailyChallenge">
+
+Daily Challenges
+
+</option>
+
+<option value="quizCategory">
+
+Quiz Category
+
+</option>
+
+<option value="popularQuiz">
+
+Popular Quiz
+
+</option>
+
+</select>
+
+<label class="quizLabel">
+
+Sub Category
+
+</label>
+
+<select
+id="quizSubCategory"
+class="quizInput">
+
+<option value="">
+
+Select Sub Category
+
+</option>
+
+</select>
+
+<label class="quizLabel">
+
+Quiz Title
+
+</label>
+
+<input
+type="text"
+id="quizTitle"
+class="quizInput"
+placeholder="Example : Football Legends Quiz">
+
+<label class="quizLabel">
+
+Total Questions
+
+</label>
+
+<select
+id="totalQuestions"
+class="quizInput">
+
+<option value="">
+
+Select Total Questions
+
+</option>
+
+<option value="5">5</option>
+
+<option value="10">10</option>
+
+<option value="15">15</option>
+
+<option value="20">20</option>
+
+</select>
+
+<h3
+id="questionNumber"
+class="questionTitle">
+
+Question 1
+
+</h3>
+
+<label class="quizLabel">
+
+Question Image
+
+</label>
+
+<input
+type="file"
+id="questionImage"
+class="quizInput"
+accept="image/*">
+
+<div class="questionPreviewContainer">
+
+<img
+id="questionPreviewImage"
+class="questionPreviewImage">
+
+<p
+id="questionPreviewText"
+class="questionPreviewText">
+
+No Question Image Selected
+
+</p>
+
+</div>
+
+<label class="quizLabel">
+
+Option A
+
+</label>
+
+<input
+type="text"
+id="optionA"
+class="quizInput">
+
+<label class="quizLabel">
+
+Option B
+
+</label>
+
+<input
+type="text"
+id="optionB"
+class="quizInput">
+
+<label class="quizLabel">
+
+Option C
+
+</label>
+
+<input
+type="text"
+id="optionC"
+class="quizInput">
+
+<label class="quizLabel">
+
+Option D
+
+</label>
+
+<input
+type="text"
+id="optionD"
+class="quizInput">
+
+<label class="quizLabel">
+
+Correct Answer
+
+</label>
+
+<select
+id="correctAnswer"
+class="quizInput">
+
+<option value="">
+
+Select Correct Answer
+
+</option>
+
+<option value="A">
+
+A
+
+</option>
+
+<option value="B">
+
+B
+
+</option>
+
+<option value="C">
+
+C
+
+</option>
+
+<option value="D">
+
+D
+
+</option>
+
+</select>
+
+<button
+id="nextQuestionButton"
+class="quizButton">
+
+Next Question
+
+</button>
+
+<button
+id="saveQuizButton"
+class="quizButton"
+style="display:none;">
+
+Save Quiz
+
+</button>
+
+</section>
+
+<!-- =========================================================
+END OF SECTION 05 HTML
+========================================================= -->
+<!-- =========================================================
+SECTION 06
+MANAGE QUIZZES HTML
+========================================================= -->
+
+<section
+id="manageQuizSection"
+class="manageQuizSection">
+
+<h2 class="manageQuizTitle">
+
+Manage Quizzes
+
+</h2>
+
+<div class="filterGrid">
+
+<select
+id="filterMotherCategory"
+class="manageQuizInput">
+
+<option value="">
+
+Select Mother Category
+
+</option>
+
+<option value="dailyChallenge">
+
+Daily Challenges
+
+</option>
+
+<option value="quizCategory">
+
+Quiz Category
+
+</option>
+
+<option value="popularQuiz">
+
+Popular Quiz
+
+</option>
+
+</select>
+
+<select
+id="filterSubCategory"
+class="manageQuizInput">
+
+<option value="">
+
+Select Sub Category
+
+</option>
+
+</select>
+
+</div>
+
+<div
+id="quizGrid"
+class="quizGrid">
+
+</div>
+
+</section>
+
+<!-- =========================================================
+END OF SECTION 06 HTML
+========================================================= -->
+<!-- =========================================================
+SECTION 07
+LOGOUT HTML
+========================================================= -->
+
+<section
+id="logoutSection"
+class="logoutSection">
+
+<h2 class="logoutTitle">
+
+Logout
+
+</h2>
+
+<p class="logoutDescription">
+
+Are you sure you want to logout from the Quizcano Admin Dashboard?
+
+</p>
+
+<div class="logoutButtons">
+
+<button
+id="cancelLogoutButton"
+class="cancelLogoutButton">
+
+Cancel
+
+</button>
+
+<button
+id="confirmLogoutButton"
+class="confirmLogoutButton">
+
+Logout
+
+</button>
+
+</div>
+
+</section>
+
+<!-- =========================================================
+END OF SECTION 07 HTML
+========================================================= -->
+  
+<script type="module">
+/* =========================================================
+SECTION 00
+FIREBASE CONFIGURATION
+========================================================= */
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+
+import {
+getAuth,
+signOut
+} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+
+import {
+getFirestore,
+collection,
+addDoc,
+getDocs,
+getDoc,  
+deleteDoc,
+doc,
+updateDoc,
+query,
+where,
+serverTimestamp
+} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+
+const firebaseConfig = {
+
+apiKey:"AIzaSyAnMxqDpdzgKEW1vkRSrLysT-0nu_vEf8Q",
+
+authDomain:"quizcano.firebaseapp.com",
+
+projectId:"quizcano",
+
+storageBucket:"quizcano.firebasestorage.app",
+
+messagingSenderId:"834135771491",
+
+appId:"1:834135771491:web:c9998944df72d14a7b2b56"
+
+};
+
+const app = initializeApp(firebaseConfig);
+
+const auth = getAuth(app);
+
+const db = getFirestore(app);
+
+/* =========================================================
+END OF SECTION 00
+========================================================= */
+/* =========================================================
+SECTION 01
+HEADER JAVASCRIPT
+========================================================= */
+
+/*
+Section 01 contains no JavaScript.
+Reserved for future header features.
+*/
+
+/* =========================================================
+END OF SECTION 01 JAVASCRIPT
+========================================================= */
+/* =========================================================
+SECTION 02
+ADMIN MENU JAVASCRIPT
+========================================================= */
+
+const createSubCategoryButton =
+document.getElementById("createSubCategoryButton");
+
+const manageSubCategoryButton =
+document.getElementById("manageSubCategoryButton");
+
+const createQuizButton =
+document.getElementById("createQuizButton");
+
+const manageQuizButton =
+document.getElementById("manageQuizButton");
+
+const logoutButton =
+document.getElementById("logoutButton");
+
+/*
+Navigation will be connected
+when each section is created.
+*/
+
+/* =========================================================
+END OF SECTION 02 JAVASCRIPT
+========================================================= */
+/* =========================================================
+SECTION 03
+CREATE SUB CATEGORY JAVASCRIPT
+========================================================= */
+
+const createSubCategorySection=
+document.getElementById("createSubCategorySection");
+
+const motherCategory=
+document.getElementById("motherCategory");
+
+const subCategoryName=
+document.getElementById("subCategoryName");
+
+const subCategoryBanner=
+document.getElementById("subCategoryBanner");
+
+const bannerPreviewImage=
+document.getElementById("bannerPreviewImage");
+
+const bannerPreviewText=
+document.getElementById("bannerPreviewText");
+
+const saveSubCategoryButton=
+document.getElementById("saveSubCategoryButton");
+
+/* Open Section */
+
+createSubCategoryButton.onclick=()=>{
+
+createSubCategorySection.classList.add("show");
+
+};
+
+/* Banner Preview */
+
+subCategoryBanner.onchange=()=>{
+
+const file=subCategoryBanner.files[0];
+
+if(!file){
+
+bannerPreviewImage.style.display="none";
+
+bannerPreviewText.style.display="block";
+
+return;
+
+}
+
+const reader=new FileReader();
+
+reader.onload=(e)=>{
+
+bannerPreviewImage.src=e.target.result;
+
+bannerPreviewImage.style.display="block";
+
+bannerPreviewText.style.display="none";
+
+};
+
+reader.readAsDataURL(file);
+
+};
+
+/* Save Sub Category */
+
+saveSubCategoryButton.onclick = async () => {
+
+const parent = motherCategory.value.trim();
+
+const name = subCategoryName.value.trim();
+
+const file = subCategoryBanner.files[0];
+
+if(parent===""){
+
+alert("Select Mother Category.");
+
+return;
+
+}
+
+if(name===""){
+
+alert("Enter Sub Category Name.");
+
+return;
+
+}
+
+saveSubCategoryButton.disabled=true;
+
+saveSubCategoryButton.innerText="Saving...";
+
+try{
+
+let bannerUrl = bannerPreviewImage.src;
+
+/* Upload new banner only if user selected one */
+
+if(file){
+
+const formData=new FormData();
+
+formData.append("file",file);
+
+formData.append("upload_preset","Ummuhalti");
+
+const response=await fetch(
+
+"https://api.cloudinary.com/v1_1/db92r6j9z/image/upload",
+
+{
+
+method:"POST",
+
+body:formData
+
+}
+
+);
+
+const data=await response.json();
+
+if(!data.secure_url){
+
+throw new Error("Upload failed");
+
+}
+
+bannerUrl=data.secure_url;
+
+}
+
+/* UPDATE */
+
+if(saveSubCategoryButton.dataset.editId){
+
+await updateDoc(
+
+doc(db,"subCategories",saveSubCategoryButton.dataset.editId),
+
+{
+
+parentCategory:parent,
+
+name:name,
+
+banner:bannerUrl
+
+}
+
+);
+
+alert("Sub Category updated successfully.");
+
+delete saveSubCategoryButton.dataset.editId;
+
+saveSubCategoryButton.innerText="Save Sub Category";
+
+}
+
+/* CREATE */
+
+else{
+
+if(!file){
+
+alert("Select Banner Image.");
+
+saveSubCategoryButton.disabled=false;
+
+saveSubCategoryButton.innerText="Save Sub Category";
+
+return;
+
+}
+
+await addDoc(
+
+collection(db,"subCategories"),
+
+{
+
+parentCategory:parent,
+
+name:name,
+
+banner:bannerUrl,
+
+createdAt:serverTimestamp()
+
+}
+
+);
+
+alert("Sub Category created successfully.");
+
+}
+
+/* Reset Form */
+
+motherCategory.value="";
+subCategoryName.value="";
+subCategoryBanner.value="";
+bannerPreviewImage.src="";
+bannerPreviewImage.style.display="none";
+bannerPreviewText.style.display="block";
+
+delete saveSubCategoryButton.dataset.editId;
+saveSubCategoryButton.innerText="Save Sub Category";
+
+/* Hide Create Form */
+
+createSubCategorySection.classList.remove("show");
+
+/* Refresh Manage List */
+
+loadSubCategories();
+  
+}
+catch(error){
+
+console.error(error);
+
+alert("Operation failed.");
+
+}
+
+saveSubCategoryButton.disabled=false;
+
+saveSubCategoryButton.innerText="Save Sub Category";
+
+};
+/* =========================================================
+END OF SECTION 03 JAVASCRIPT
+========================================================= */
+/* =========================================================
+SECTION 04
+MANAGE SUB CATEGORIES JAVASCRIPT
+========================================================= */
+
+const manageSubCategorySection=
+document.getElementById("manageSubCategorySection");
+
+const manageGrid=
+document.getElementById("manageGrid");
+
+/* Open Section */
+
+manageSubCategoryButton.onclick=()=>{
+
+manageSubCategorySection.classList.add("show");
+
+loadSubCategories();
+createSubCategorySection.classList.remove("show");  
+
+};
+
+/* Load Sub Categories */
+
+async function loadSubCategories(){
+
+manageGrid.innerHTML="Loading...";
+
+try{
+
+const snapshot=await getDocs(collection(db,"subCategories"));
+
+manageGrid.innerHTML="";
+
+if(snapshot.empty){
+
+manageGrid.innerHTML="<p style='text-align:center;'>No Sub Categories Found.</p>";
+
+return;
+
+}
+
+snapshot.forEach((docItem)=>{
+
+const item=docItem.data();
+
+manageGrid.innerHTML+=`
+
+<div class="subCategoryCard">
+
+<img
+src="${item.banner}"
+class="subCategoryBanner">
+
+<div class="subCategoryBody">
+
+<div class="parentCategoryText">
+
+${item.parentCategory}
+
+</div>
+
+<div class="subCategoryTitle">
+
+${item.name}
+
+</div>
+
+<div class="subCategoryButtons">
+
+<button
+class="editSubCategoryButton"
+data-id="${docItem.id}">
+
+Edit
+
+</button>
+
+<button
+class="deleteSubCategoryButton"
+data-id="${docItem.id}">
+
+Delete
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+/* EDIT BUTTON */
+
+document.querySelectorAll(".editSubCategoryButton").forEach(button=>{
+
+button.addEventListener("click",()=>{
+
+editSubCategory(button.dataset.id);
+
+});
+
+});
+
+/* DELETE BUTTON */
+
+document.querySelectorAll(".deleteSubCategoryButton").forEach(button=>{
+
+button.addEventListener("click",()=>{
+
+deleteSubCategory(button.dataset.id);
+
+});
+
+});
+
+}catch(error){
+
+console.error(error);
+
+manageGrid.innerHTML="<p style='color:red;text-align:center;'>Failed to load sub categories.</p>";
+
+}
+
+}
+
+/* Delete Sub Category */
+
+async function deleteSubCategory(id){
+
+if(!confirm("Delete this Sub Category?")) return;
+
+try{
+
+await deleteDoc(doc(db,"subCategories",id));
+
+alert("Sub Category deleted successfully.");
+
+loadSubCategories();
+
+}catch(error){
+
+console.error(error);
+
+alert("Delete failed.");
+
+}
+
+}
+
+/* Edit Sub Category */
+
+async function editSubCategory(id){
+
+const documentRef=doc(db,"subCategories",id);
+
+const snapshot=await getDoc(documentRef);
+
+if(!snapshot.exists()){
+
+alert("Sub Category not found.");
+
+return;
+
+}
+
+const item=snapshot.data();
+
+/* Open Create Section */
+
+createSubCategorySection.classList.add("show");
+
+/* Fill Form */
+
+motherCategory.value=item.parentCategory;
+
+subCategoryName.value=item.name;
+
+bannerPreviewImage.src=item.banner;
+
+bannerPreviewImage.style.display="block";
+
+bannerPreviewText.style.display="none";
+
+/* Remember document id */
+
+saveSubCategoryButton.dataset.editId=id;
+
+saveSubCategoryButton.innerText="Update Sub Category";
+
+}
+
+/* =========================================================
+END OF SECTION 04 JAVASCRIPT
+========================================================= */
+/* =========================================================
+SECTION 05
+CREATE QUIZ JAVASCRIPT
+========================================================= */
+
+const createQuizSection=
+document.getElementById("createQuizSection");
+
+const quizMotherCategory=
+document.getElementById("quizMotherCategory");
+
+const quizSubCategory=
+document.getElementById("quizSubCategory");
+
+const quizTitle=
+document.getElementById("quizTitle");
+
+const totalQuestions=
+document.getElementById("totalQuestions");
+
+const questionNumber=
+document.getElementById("questionNumber");
+
+const questionImage=
+document.getElementById("questionImage");
+
+const questionPreviewImage=
+document.getElementById("questionPreviewImage");
+
+const questionPreviewText=
+document.getElementById("questionPreviewText");
+
+const optionA=
+document.getElementById("optionA");
+
+const optionB=
+document.getElementById("optionB");
+
+const optionC=
+document.getElementById("optionC");
+
+const optionD=
+document.getElementById("optionD");
+
+const correctAnswer=
+document.getElementById("correctAnswer");
+
+const nextQuestionButton=
+document.getElementById("nextQuestionButton");
+
+const saveQuizButton=
+document.getElementById("saveQuizButton");
+
+let currentQuestion=1;
+
+let quizQuestions=[];
+
+/* Open */
+
+createQuizButton.onclick=()=>{
+
+createQuizSection.classList.add("show");
+
+quizMotherCategory.value="";
+
+quizSubCategory.innerHTML=`
+<option value="">
+Select Sub Category
+</option>
+`;
+
+};
+
+/* Question Preview */
+
+questionImage.onchange=()=>{
+
+const file=questionImage.files[0];
+
+if(!file){
+
+questionPreviewImage.style.display="none";
+
+questionPreviewText.style.display="block";
+
+return;
+
+}
+
+const reader=new FileReader();
+
+reader.onload=(e)=>{
+
+questionPreviewImage.src=e.target.result;
+
+questionPreviewImage.style.display="block";
+
+questionPreviewText.style.display="none";
+
+};
+
+reader.readAsDataURL(file);
+
+};
+
+/* Load Sub Categories */
+
+quizMotherCategory.onchange=async()=>{
+
+quizSubCategory.innerHTML=`
+<option value="">
+Loading...
+</option>
+`;
+
+if(quizMotherCategory.value===""){
+
+quizSubCategory.innerHTML=`
+<option value="">
+Select Sub Category
+</option>
+`;
+
+return;
+
+}
+
+try{
+
+const q=query(
+
+collection(db,"subCategories"),
+
+where("parentCategory","==",quizMotherCategory.value)
+
+);
+
+const snapshot=await getDocs(q);
+
+quizSubCategory.innerHTML=`
+<option value="">
+Select Sub Category
+</option>
+`;
+
+if(snapshot.empty){
+
+quizSubCategory.innerHTML=`
+<option value="">
+No Sub Category Found
+</option>
+`;
+
+return;
+
+}
+
+snapshot.forEach((docItem)=>{
+
+const item=docItem.data();
+
+quizSubCategory.innerHTML+=`
+
+<option value="${docItem.id}">
+${item.name}
+</option>
+
+`;
+
+});
+
+}catch(error){
+
+console.error(error);
+
+quizSubCategory.innerHTML=`
+<option value="">
+Failed To Load
+</option>
+`;
+
+}
+
+};
+  
+/* Next Question */
+
+nextQuestionButton.onclick=()=>{
+
+if(optionA.value.trim()===""){
+
+alert("Enter Option A.");
+
+return;
+
+}
+
+if(optionB.value.trim()===""){
+
+alert("Enter Option B.");
+
+return;
+
+}
+
+if(optionC.value.trim()===""){
+
+alert("Enter Option C.");
+
+return;
+
+}
+
+if(optionD.value.trim()===""){
+
+alert("Enter Option D.");
+
+return;
+
+}
+
+if(correctAnswer.value===""){
+
+alert("Select Correct Answer.");
+
+return;
+
+}
+
+if(questionImage.files.length===0){
+
+alert("Select Question Image.");
+
+return;
+
+}
+
+/* Save Question Temporarily */
+
+quizQuestions.push({
+
+questionNumber:currentQuestion,
+
+optionA:optionA.value,
+
+optionB:optionB.value,
+
+optionC:optionC.value,
+
+optionD:optionD.value,
+
+correctAnswer:correctAnswer.value,
+
+image:questionImage.files[0]
+
+});
+
+/* Next Question */
+
+currentQuestion++;
+
+if(currentQuestion<=Number(totalQuestions.value)){
+
+questionNumber.innerText="Question "+currentQuestion;
+
+/* Clear Question Form */
+
+questionImage.value="";
+
+questionPreviewImage.src="";
+
+questionPreviewImage.style.display="none";
+
+questionPreviewText.style.display="block";
+
+optionA.value="";
+
+optionB.value="";
+
+optionC.value="";
+
+optionD.value="";
+
+correctAnswer.value="";
+
+}
+
+/* Last Question */
+
+if(currentQuestion>Number(totalQuestions.value)){
+
+questionNumber.innerText="All Questions Added";
+
+nextQuestionButton.style.display="none";
+
+saveQuizButton.style.display="block";
+
+}
+
+};
+
+/* Save Quiz */
+
+saveQuizButton.onclick=async()=>{
+
+saveQuizButton.disabled=true;
+
+saveQuizButton.innerText="Saving Quiz...";
+
+try{
+
+/* Upload Last Question */
+
+const file=questionImage.files[0];
+
+const formData=new FormData();
+
+formData.append("file",file);
+
+formData.append("upload_preset","Ummuhalti");
+
+const response=await fetch(
+
+"https://api.cloudinary.com/v1_1/db92r6j9z/image/upload",
+
+{
+
+method:"POST",
+
+body:formData
+
+}
+
+);
+
+const imageData=await response.json();
+
+/* Save Last Question */
+
+quizQuestions.push({
+
+questionNumber:currentQuestion,
+
+image:imageData.secure_url,
+
+optionA:optionA.value,
+
+optionB:optionB.value,
+
+optionC:optionC.value,
+
+optionD:optionD.value,
+
+correctAnswer:correctAnswer.value
+
+});
+
+/* Upload Previous Question Images */
+
+for(let i=0;i<quizQuestions.length-1;i++){
+
+if(quizQuestions[i].image instanceof File){
+
+const data=new FormData();
+
+data.append("file",quizQuestions[i].image);
+
+data.append("upload_preset","Ummuhalti");
+
+const upload=await fetch(
+
+"https://api.cloudinary.com/v1_1/db92r6j9z/image/upload",
+
+{
+
+method:"POST",
+
+body:data
+
+}
+
+);
+
+const result=await upload.json();
+
+quizQuestions[i].image=result.secure_url;
+
+}
+
+}
+
+/* Save Quiz */
+
+await addDoc(
+
+collection(db,"quizzes"),
+
+{
+
+motherCategory:quizMotherCategory.value,
+
+subCategoryId:quizSubCategory.value,
+
+subCategoryName:
+
+quizSubCategory.options[quizSubCategory.selectedIndex].text,
+
+title:quizTitle.value,
+
+totalQuestions:Number(totalQuestions.value),
+
+questions:quizQuestions,
+
+createdAt:serverTimestamp()
+
+}
+
+);
+
+alert("Quiz saved successfully.");
+
+/* Reset */
+
+quizMotherCategory.value="";
+
+quizSubCategory.innerHTML="<option value=''>Select Sub Category</option>";
+
+quizTitle.value="";
+
+totalQuestions.value="";
+
+questionNumber.innerText="Question 1";
+
+currentQuestion=1;
+
+quizQuestions=[];
+
+questionImage.value="";
+
+questionPreviewImage.src="";
+
+questionPreviewImage.style.display="none";
+
+questionPreviewText.style.display="block";
+
+optionA.value="";
+
+optionB.value="";
+
+optionC.value="";
+
+optionD.value="";
+
+correctAnswer.value="";
+
+saveQuizButton.style.display="none";
+
+nextQuestionButton.style.display="block";
+
+createQuizSection.classList.remove("show");
+
+}catch(error){
+
+console.error(error);
+
+alert("Failed to save quiz.");
+
+}
+
+saveQuizButton.disabled=false;
+
+saveQuizButton.innerText="Save Quiz";
+
+};
+
+
+
+  
+/* =========================================================
+END OF SECTION 05 JAVASCRIPT
+========================================================= */  
+/* =========================================================
+SECTION 06
+MANAGE QUIZZES JAVASCRIPT
+========================================================= */
+
+const manageQuizSection=
+document.getElementById("manageQuizSection");
+
+const filterMotherCategory=
+document.getElementById("filterMotherCategory");
+
+const filterSubCategory=
+document.getElementById("filterSubCategory");
+
+const quizGrid=
+document.getElementById("quizGrid");
+
+/* Open */
+
+manageQuizButton.onclick=()=>{
+
+manageQuizSection.classList.add("show");
+
+quizGrid.innerHTML="";
+
+filterMotherCategory.value="";
+
+filterSubCategory.innerHTML=`
+<option value="">
+Select Sub Category
+</option>
+`;
+
+};
+
+/* Load Sub Categories */
+
+filterMotherCategory.onchange=async()=>{
+
+quizGrid.innerHTML="";
+
+filterSubCategory.innerHTML=`
+<option value="">
+Loading...
+</option>
+`;
+
+if(filterMotherCategory.value===""){
+
+filterSubCategory.innerHTML=`
+<option value="">
+Select Sub Category
+</option>
+`;
+
+return;
+
+}
+
+try{
+
+const q=query(
+
+collection(db,"subCategories"),
+
+where("parentCategory","==",filterMotherCategory.value)
+
+);
+
+const snapshot=await getDocs(q);
+
+filterSubCategory.innerHTML=`
+<option value="">
+Select Sub Category
+</option>
+`;
+
+if(snapshot.empty){
+
+filterSubCategory.innerHTML=`
+<option value="">
+No Sub Category Found
+</option>
+`;
+
+return;
+
+}
+
+snapshot.forEach((docItem)=>{
+
+const item=docItem.data();
+
+filterSubCategory.innerHTML+=`
+
+<option value="${docItem.id}">
+${item.name}
+</option>
+
+`;
+
+});
+
+}catch(error){
+
+console.error(error);
+
+filterSubCategory.innerHTML=`
+<option value="">
+Failed To Load
+</option>
+`;
+
+}
+
+};
+
+/* Load Quiz List */
+
+filterSubCategory.onchange=()=>{
+
+loadQuizList();
+
+};
+
+async function loadQuizList(){
+
+quizGrid.innerHTML="Loading...";
+
+try{
+
+const q=query(
+
+collection(db,"quizzes"),
+
+where("subCategoryId","==",filterSubCategory.value)
+
+);
+
+const snapshot=await getDocs(q);
+
+quizGrid.innerHTML="";
+
+if(snapshot.empty){
+
+quizGrid.innerHTML="<p style='text-align:center;'>No Quiz Found.</p>";
+
+return;
+
+}
+
+snapshot.forEach((docItem)=>{
+
+const quiz=docItem.data();
+
+const firstImage=quiz.questions[0].image;
+
+quizGrid.innerHTML+=`
+
+<div class="quizCard">
+
+<img
+src="${firstImage}"
+class="quizCardImage">
+
+<div class="quizCardBody">
+
+<div class="quizCardTitle">
+
+${quiz.title}
+
+</div>
+
+<div class="quizCardInfo">
+
+Questions : ${quiz.totalQuestions}
+
+</div>
+
+<div class="quizCardButtons">
+
+<button
+class="editQuizButton"
+data-id="${docItem.id}">
+
+Edit
+
+</button>
+
+<button
+class="deleteQuizButton"
+data-id="${docItem.id}">
+
+Delete
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+/* Edit Button */
+
+document.querySelectorAll(".editQuizButton").forEach(button=>{
+
+button.onclick=()=>{
+
+editQuiz(button.dataset.id);
+
+};
+
+});
+
+/* Delete Button */
+
+document.querySelectorAll(".deleteQuizButton").forEach(button=>{
+
+button.onclick=()=>{
+
+deleteQuiz(button.dataset.id);
+
+};
+
+});
+
+}catch(error){
+
+console.error(error);
+
+quizGrid.innerHTML="<p style='text-align:center;color:red;'>Failed to load quizzes.</p>";
+
+}
+
+}
+/* Delete Quiz */
+
+async function deleteQuiz(id){
+
+if(!confirm("Delete this quiz?")) return;
+
+try{
+
+await deleteDoc(doc(db,"quizzes",id));
+
+alert("Quiz deleted successfully.");
+
+loadQuizList();
+
+}catch(error){
+
+console.error(error);
+
+alert("Delete failed.");
+
+}
+
+}
+
+/* Edit Quiz */
+
+async function editQuiz(id){
+
+alert("Edit Quiz will be implemented in the next step.");
+
+}
+/* =========================================================
+END OF SECTION 06 JAVASCRIPT
+========================================================= */
+
+/* =========================================================
+SECTION 07
+LOGOUT JAVASCRIPT
+========================================================= */
+
+const logoutSection=
+document.getElementById("logoutSection");
+
+const cancelLogoutButton=
+document.getElementById("cancelLogoutButton");
+
+const confirmLogoutButton=
+document.getElementById("confirmLogoutButton");
+
+/* Open Logout */
+
+logoutButton.onclick=()=>{
+
+logoutSection.classList.add("show");
+
+};
+
+/* Cancel */
+
+cancelLogoutButton.onclick=()=>{
+
+logoutSection.classList.remove("show");
+
+};
+
+/* Logout */
+
+confirmLogoutButton.onclick=async()=>{
+
+try{
+
+await signOut(auth);
+
+window.location.href="index.html";
+
+}
+
+catch(error){
+
+alert("Logout failed.");
+
+console.error(error);
+
+}
+
+};
+
+/* =========================================================
+END OF SECTION 07 JAVASCRIPT
+========================================================= */  
+  
+</script>
+
+</body>
+
+</html>
