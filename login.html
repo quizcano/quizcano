@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>QUIZCANO - Admin Login</title>
+
+    <style>
+
+/* =========================================================
+SECTION 01
+ADMIN LOGIN HEADER CSS
+========================================================= */
+
+/* ===========================
+Reset
+=========================== */
+
+*{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+body{
+
+    background:#0B1120;
+
+    font-family:Arial,Helvetica,sans-serif;
+
+    color:#FFFFFF;
+
+}
+
+/* ===========================
+Admin Header
+=========================== */
+
+.admin-header{
+
+    width:100%;
+
+    padding:60px 20px 30px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+}
+
+/* ===========================
+Logo Area
+=========================== */
+
+.admin-logo-area{
+
+    width:100%;
+
+    max-width:420px;
+
+}
+
+/* ===========================
+Logo
+=========================== */
+
+.admin-logo{
+
+    font-size:42px;
+
+    font-weight:900;
+
+    letter-spacing:1px;
+
+    line-height:1;
+
+}
+
+/* ===========================
+Logo Colors
+=========================== */
+
+.logo-white{
+
+    color:#FFFFFF;
+
+}
+
+.logo-orange{
+
+    color:#F59E0B;
+
+}
+
+/* ===========================
+Admin Title
+=========================== */
+
+.admin-title{
+
+    margin-top:18px;
+
+    font-size:28px;
+
+    font-weight:800;
+
+    color:#FFFFFF;
+
+}
+
+/* ===========================
+Description
+=========================== */
+
+.admin-description{
+
+    margin-top:12px;
+
+    font-size:16px;
+
+    line-height:1.6;
+
+    color:#9CA3AF;
+
+}
+
+/* =========================================================
+END OF SECTION 01 CSS
+========================================================= */
+
+
+        /* =========================================================
+SECTION 02
+ADMIN EMAIL FIELD CSS
+========================================================= */
+
+/* ===========================
+Email Section
+=========================== */
+
+.admin-email-section{
+
+    width:100%;
+
+    max-width:420px;
+
+    margin:0 auto;
+
+    padding:10px 20px;
+
+}
+
+/* ===========================
+Input Label
+=========================== */
+
+.admin-input-label{
+
+    display:block;
+
+    margin-bottom:10px;
+
+    font-size:15px;
+
+    font-weight:700;
+
+    color:#FFFFFF;
+
+}
+
+/* ===========================
+Input Field
+=========================== */
+
+.admin-input{
+
+    width:100%;
+
+    height:56px;
+
+    padding:0 18px;
+
+    border:2px solid #1A2138;
+
+    border-radius:16px;
+
+    background:#111827;
+
+    color:#FFFFFF;
+
+    font-size:16px;
+
+    outline:none;
+
+    transition:.25s ease;
+
+}
+
+/* ===========================
+Placeholder
+=========================== */
+
+.admin-input::placeholder{
+
+    color:#8B93A7;
+
+}
+
+/* ===========================
+Focus
+=========================== */
+
+.admin-input:focus{
+
+    border-color:#F59E0B;
+
+    box-shadow:0 0 0 4px rgba(245,158,11,.15);
+
+}
+
+/* =========================================================
+END OF SECTION 02 CSS
+========================================================= */
+
+
+/* =========================================================
+SECTION 03
+ADMIN PASSWORD FIELD CSS
+========================================================= */
+
+/* ===========================
+Password Section
+=========================== */
+
+.admin-password-section{
+
+    width:100%;
+
+    max-width:420px;
+
+    margin:0 auto;
+
+    padding:10px 20px 24px;
+
+}
+
+/* =========================================================
+END OF SECTION 03 CSS
+========================================================= */
+
+
+/* =========================================================
+SECTION 04
+ADMIN LOGIN BUTTON CSS
+========================================================= */
+
+/* ===========================
+Login Button Section
+=========================== */
+
+.admin-login-button-section{
+
+    width:100%;
+
+    max-width:420px;
+
+    margin:0 auto;
+
+    padding:0 20px;
+
+}
+
+/* ===========================
+Login Button
+=========================== */
+
+.admin-login-button{
+
+    width:100%;
+
+    height:56px;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:#F59E0B;
+
+    color:#FFFFFF;
+
+    font-size:18px;
+
+    font-weight:800;
+
+    letter-spacing:.5px;
+
+    cursor:pointer;
+
+    transition:all .25s ease;
+
+    box-shadow:0 6px 18px rgba(245,158,11,.30);
+
+}
+
+/* ===========================
+Hover
+=========================== */
+
+.admin-login-button:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:0 10px 24px rgba(245,158,11,.35);
+
+}
+
+/* ===========================
+Pressed
+=========================== */
+
+.admin-login-button:active{
+
+    transform:scale(.98);
+
+}
+
+/* ===========================
+Disabled
+=========================== */
+
+.admin-login-button:disabled{
+
+    background:#374151;
+
+    color:#9CA3AF;
+
+    cursor:not-allowed;
+
+    box-shadow:none;
+
+    transform:none;
+
+}
+
+/* ===========================
+Loading State
+=========================== */
+
+.admin-login-button.loading{
+
+    background:#D97706;
+
+    pointer-events:none;
+
+}
+
+/* =========================================================
+END OF SECTION 04 CSS
+========================================================= */
+
+
+/* =========================================================
+SECTION 05
+ADMIN ERROR MESSAGE CSS
+========================================================= */
+
+/* ===========================
+Message Section
+=========================== */
+
+.admin-message-section{
+
+    width:100%;
+
+    max-width:420px;
+
+    margin:0 auto;
+
+    padding:18px 20px 0;
+
+}
+
+/* ===========================
+Message
+=========================== */
+
+.admin-message{
+
+    display:none;
+
+    text-align:center;
+
+    font-size:15px;
+
+    font-weight:700;
+
+    line-height:1.5;
+
+    padding:14px 16px;
+
+    border-radius:14px;
+
+}
+
+/* ===========================
+Show Message
+=========================== */
+
+.admin-message.show{
+
+    display:block;
+
+}
+
+/* ===========================
+Error Message
+=========================== */
+
+.admin-message.error{
+
+    background:rgba(239,68,68,.15);
+
+    color:#F87171;
+
+    border:1px solid rgba(239,68,68,.35);
+
+}
+
+/* ===========================
+Success Message
+=========================== */
+
+.admin-message.success{
+
+    background:rgba(34,197,94,.15);
+
+    color:#4ADE80;
+
+    border:1px solid rgba(34,197,94,.35);
+
+}
+
+/* ===========================
+Loading Message
+=========================== */
+
+.admin-message.loading{
+
+    background:rgba(245,158,11,.15);
+
+    color:#FBBF24;
+
+    border:1px solid rgba(245,158,11,.35);
+
+}
+
+/* =========================================================
+END OF SECTION 05 CSS
+========================================================= */
+
+        
+    </style>
+
+</head>
+
+<body>
+
+
+<!-- =========================================================
+SECTION 01
+ADMIN LOGIN HEADER HTML
+========================================================= -->
+
+<header class="admin-header">
+
+    <!-- ==========================
+    Logo Area
+    =========================== -->
+
+    <div class="admin-logo-area">
+
+        <!-- Logo -->
+
+        <h1 class="admin-logo">
+
+            <span class="logo-white">QUIZ</span><span class="logo-orange">CANO</span>
+
+        </h1>
+
+        <!-- Admin Title -->
+
+        <h2 class="admin-title">
+
+            Admin Login
+
+        </h2>
+
+        <!-- Description -->
+
+        <p class="admin-description">
+
+            Sign in to manage categories and quizzes.
+
+        </p>
+
+    </div>
+
+</header>
+
+<!-- =========================================================
+END OF SECTION 01 HTML
+========================================================= -->
+
+<!-- =========================================================
+SECTION 02
+ADMIN EMAIL FIELD HTML
+========================================================= -->
+
+<section class="admin-email-section">
+
+    <!-- ==========================
+    Email Label
+    =========================== -->
+
+    <label
+        class="admin-input-label"
+        for="adminEmail">
+
+        Email Address
+
+    </label>
+
+    <!-- ==========================
+    Email Input
+    =========================== -->
+
+    <input
+        type="email"
+        id="adminEmail"
+        class="admin-input"
+        placeholder="Enter admin email"
+        autocomplete="email">
+
+</section>
+
+<!-- =========================================================
+END OF SECTION 02 HTML
+========================================================= -->
+
+<!-- =========================================================
+SECTION 03
+ADMIN PASSWORD FIELD HTML
+========================================================= -->
+
+<section class="admin-password-section">
+
+    <!-- ==========================
+    Password Label
+    =========================== -->
+
+    <label
+        class="admin-input-label"
+        for="adminPassword">
+
+        Password
+
+    </label>
+
+    <!-- ==========================
+    Password Input
+    =========================== -->
+
+    <input
+        type="password"
+        id="adminPassword"
+        class="admin-input"
+        placeholder="Enter password"
+        autocomplete="current-password">
+
+</section>
+
+<!-- =========================================================
+END OF SECTION 03 HTML
+========================================================= -->
+
+
+<!-- =========================================================
+SECTION 04
+ADMIN LOGIN BUTTON HTML
+========================================================= -->
+
+<section class="admin-login-button-section">
+
+    <!-- ==========================
+    Login Button
+    =========================== -->
+
+    <button
+        id="adminLoginButton"
+        class="admin-login-button">
+
+        Login
+
+    </button>
+
+</section>
+
+<!-- =========================================================
+END OF SECTION 04 HTML
+========================================================= -->
+
+
+    <!-- =========================================================
+SECTION 05
+ADMIN ERROR MESSAGE HTML
+========================================================= -->
+
+<section class="admin-message-section">
+
+    <!-- ==========================
+    Login Message
+    =========================== -->
+
+    <p
+        id="adminMessage"
+        class="admin-message">
+
+    </p>
+
+</section>
+
+<!-- =========================================================
+END OF SECTION 05 HTML
+========================================================= -->
+
+
+    <script type="module">
+
+/* =========================================================
+SECTION 01
+ADMIN LOGIN PAGE JAVASCRIPT
+========================================================= */
+
+/* ===========================
+Elements
+=========================== */
+
+const adminEmail =
+document.getElementById("adminEmail");
+
+const adminPassword =
+document.getElementById("adminPassword");
+
+const adminLoginButton =
+document.getElementById("adminLoginButton");
+
+const adminMessage =
+document.getElementById("adminMessage");
+
+/* ===========================
+Show Message
+=========================== */
+
+function showMessage(
+    message,
+    type
+){
+
+    adminMessage.textContent =
+    message;
+
+    adminMessage.className =
+    "admin-message show " + type;
+
+}
+
+/* ===========================
+Hide Message
+=========================== */
+
+function hideMessage(){
+
+    adminMessage.textContent = "";
+
+    adminMessage.className =
+    "admin-message";
+
+}
+
+/* ===========================
+Start Page
+=========================== */
+
+hideMessage();
+
+/* =========================================================
+END OF SECTION 01 JAVASCRIPT
+========================================================= */
+
+/* =========================================================
+SECTION 02
+ADMIN LOGIN BUTTON JAVASCRIPT
+========================================================= */
+
+/* ===========================
+Login Button Click
+=========================== */
+
+adminLoginButton.addEventListener("click",function(){
+
+    /* Hide Previous Message */
+
+    hideMessage();
+
+    /* Get Values */
+
+    const email =
+    adminEmail.value.trim();
+
+    const password =
+    adminPassword.value.trim();
+
+    /* ===========================
+    Validate Email
+    =========================== */
+
+    if(email === ""){
+
+        showMessage(
+
+            "Please enter your email address.",
+
+            "error"
+
+        );
+
+        adminEmail.focus();
+
+        return;
+
+    }
+
+    /* ===========================
+    Validate Password
+    =========================== */
+
+    if(password === ""){
+
+        showMessage(
+
+            "Please enter your password.",
+
+            "error"
+
+        );
+
+        adminPassword.focus();
+
+        return;
+
+    }
+
+    /* ===========================
+    Loading State
+    =========================== */
+
+    adminLoginButton.disabled = true;
+
+    adminLoginButton.classList.add("loading");
+
+    adminLoginButton.textContent =
+
+    "Logging in...";
+
+    showMessage(
+
+        "Please wait...",
+
+        "loading"
+
+    );
+
+    /* ===========================
+    Firebase Login
+    Section 03
+    =========================== */
+
+    adminLogin();
+
+});
+
+/* =========================================================
+END OF SECTION 02 JAVASCRIPT
+========================================================= */
+
+/* =========================================================
+SECTION 03
+FIREBASE INITIALIZATION JAVASCRIPT
+========================================================= */
+
+/* ===========================
+Firebase Imports
+=========================== */
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+
+import {
+
+    getAuth,
+
+    signInWithEmailAndPassword
+
+}
+from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
+
+/* ===========================
+Firebase Configuration
+=========================== */
+
+const firebaseConfig = {
+
+    apiKey: "AIzaSyAnMxqDpdzgKEW1vkRSrLysT-0nu_vEf8Q",
+
+    authDomain: "quizcano.firebaseapp.com",
+
+    projectId: "quizcano",
+
+    storageBucket: "quizcano.firebasestorage.app",
+
+    messagingSenderId: "834135771491",
+
+    appId: "1:834135771491:web:c9998944df72d14a7b2b56"
+
+};
+
+/* ===========================
+Initialize Firebase
+=========================== */
+
+const app =
+initializeApp(firebaseConfig);
+
+const auth =
+getAuth(app);
+
+/* =========================================================
+END OF SECTION 03 JAVASCRIPT
+========================================================= */
+
+/* =========================================================
+SECTION 04
+FIREBASE ADMIN LOGIN JAVASCRIPT
+========================================================= */
+
+/* ===========================
+Admin Login
+=========================== */
+
+function adminLogin(){
+
+    const email =
+    adminEmail.value.trim();
+
+    const password =
+    adminPassword.value.trim();
+
+    signInWithEmailAndPassword(
+
+        auth,
+
+        email,
+
+        password
+
+    )
+
+    .then(function(userCredential){
+
+        /* ===========================
+        Login Successful
+        =========================== */
+
+        showMessage(
+
+            "Login successful...",
+
+            "success"
+
+        );
+
+        /* ===========================
+        Redirect To Dashboard
+        =========================== */
+
+        setTimeout(function(){
+
+            window.location.href =
+
+            "dashboard.html";
+
+        },1000);
+
+    })
+
+    .catch(function(error){
+
+        /* ===========================
+        Enable Button
+        =========================== */
+
+        adminLoginButton.disabled = false;
+
+        adminLoginButton.classList.remove("loading");
+
+        adminLoginButton.textContent =
+
+        "Login";
+
+        /* ===========================
+        Invalid Login
+        =========================== */
+
+        showMessage(
+
+            "Invalid email or password.",
+
+            "error"
+
+        );
+
+        console.log(error);
+
+    });
+
+}
+
+/* =========================================================
+END OF SECTION 04 JAVASCRIPT
+========================================================= */
+
+
+        /* =========================================================
+        SECTION 05
+        ADMIN FIREBASE LOGIN JAVASCRIPT
+        ========================================================= */
+
+
+        /* =========================================================
+        END OF SECTION 05 JAVASCRIPT
+        ========================================================= */
+
+    </script>
+
+</body>
+
+</html>
