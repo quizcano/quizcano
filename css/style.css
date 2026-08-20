@@ -1662,10 +1662,6 @@ PRIZE DISCLAIMER PAGE
 }
 
 
-/* =========================
-MAIN CONTAINER
-========================= */
-
 .disclaimer-page .container{
 
     width:100%;
@@ -1676,10 +1672,6 @@ MAIN CONTAINER
 
 }
 
-
-/* =========================
-DISCLAIMER CARD
-========================= */
 
 .disclaimer-card{
 
@@ -1695,15 +1687,10 @@ DISCLAIMER CARD
 
     border:1px solid #e5e7eb;
 
-    box-shadow:
-    0 15px 40px rgba(0,0,0,.08);
+    box-shadow:0 15px 40px rgba(0,0,0,.08);
 
 }
 
-
-/* =========================
-MAIN TITLE
-========================= */
 
 .disclaimer-card h1{
 
@@ -1719,10 +1706,6 @@ MAIN TITLE
 
 }
 
-
-/* =========================
-PRIZE IMAGE BOX
-========================= */
 
 .brand-box{
 
@@ -1749,10 +1732,6 @@ PRIZE IMAGE BOX
 }
 
 
-/* =========================
-PRIZE IMAGE
-========================= */
-
 .brand-box img{
 
     width:100%;
@@ -1765,10 +1744,6 @@ PRIZE IMAGE
 
 }
 
-
-/* =========================
-SUB TITLE
-========================= */
 
 .disclaimer-card h2{
 
@@ -1785,10 +1760,6 @@ SUB TITLE
 }
 
 
-/* =========================
-MAIN TEXT
-========================= */
-
 .disclaimer-card > p{
 
     font-size:15px;
@@ -1802,10 +1773,6 @@ MAIN TEXT
 }
 
 
-/* =========================
-NO PURCHASE
-========================= */
-
 .no-purchase{
 
     color:#1f2340 !important;
@@ -1816,10 +1783,6 @@ NO PURCHASE
 
 }
 
-
-/* =========================
-PARTICIPANT NOTICE
-========================= */
 
 .participant-notice{
 
@@ -1864,10 +1827,6 @@ PARTICIPANT NOTICE
 }
 
 
-/* =========================
-CONTINUE BUTTON
-========================= */
-
 .continue-btn{
 
     display:flex;
@@ -1884,13 +1843,9 @@ CONTINUE BUTTON
 
     padding:14px 20px;
 
-    background:linear-gradient(
-        90deg,
-        #7d3cff,
-        #a14cff
-    );
+    background:linear-gradient(90deg,#7d3cff,#a14cff);
 
-    color:#ffffff;
+    color:#ffffff !important;
 
     border-radius:14px;
 
@@ -1900,10 +1855,7 @@ CONTINUE BUTTON
 
     text-align:center;
 
-    box-shadow:
-    0 10px 22px rgba(125,60,255,.25);
-
-    transition:.25s ease;
+    box-shadow:0 10px 22px rgba(125,60,255,.25);
 
 }
 
@@ -1912,8 +1864,7 @@ CONTINUE BUTTON
 
     transform:translateY(-3px);
 
-    box-shadow:
-    0 14px 28px rgba(125,60,255,.35);
+    box-shadow:0 14px 28px rgba(125,60,255,.35);
 
 }
 
@@ -1924,10 +1875,6 @@ CONTINUE BUTTON
 
 }
 
-
-/* =========================
-MOBILE
-========================= */
 
 @media(max-width:480px){
 
@@ -1989,4 +1936,4 @@ MOBILE
 
     }
 
-}
+        }
