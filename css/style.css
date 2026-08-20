@@ -1937,3 +1937,71 @@ PRIZE DISCLAIMER PAGE
     }
 
         }
+/* =========================================================
+SELECTED GIFT
+========================================================= */
+
+.selected-gift{
+
+    width:100%;
+
+    margin-bottom:22px;
+
+    padding:15px;
+
+    background:#f8f9fc;
+
+    border:1px solid #e5e7eb;
+
+    border-radius:18px;
+
+    text-align:center;
+
+}
+
+
+.selected-gift img{
+
+    width:100%;
+
+    height:180px;
+
+    object-fit:contain;
+
+    display:block;
+
+    margin:auto;
+
+}
+
+
+.selected-gift h2{
+
+    margin-top:10px;
+
+    margin-bottom:0;
+
+    font-size:19px;
+
+    font-weight:800;
+
+    color:#1f2340;
+
+}
+
+
+@media(max-width:480px){
+
+    .selected-gift img{
+
+        height:160px;
+
+    }
+
+    .selected-gift h2{
+
+        font-size:17px;
+
+    }
+
+}
