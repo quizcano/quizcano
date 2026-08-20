@@ -23,13 +23,20 @@
 
 <h1>🎁 Prize Eligibility Notice</h1>
 
-<div class="brand-box">
 
-<img src="images.png" alt="Prize">
+<!-- SELECTED GIFT -->
+
+<div class="selected-gift">
+
+<img id="giftImage" src="" alt="Selected Prize">
+
+<h2 id="giftName"></h2>
 
 </div>
 
+
 <h2>You Could Be Our Next Winner!</h2>
+
 
 <p>
 
@@ -37,11 +44,13 @@ Before continuing, please review the information below.
 
 </p>
 
+
 <p class="no-purchase">
 
 <strong>No purchase is necessary.</strong>
 
 </p>
+
 
 <div class="participant-notice">
 
@@ -55,17 +64,81 @@ By clicking <strong>Continue</strong>, you agree to provide your basic informati
 
 </div>
 
-<a href="https://rileymarker.com/show.php?l=0&u=1724356&id=72846" class="continue-btn">
+
+<a
+href="https://rileymarker.com/show.php?l=0&u=1724356&id=72846"
+class="continue-btn">
 
 Continue &amp; Provide My Information
 
 </a>
+
 
 </div>
 
 </div>
 
 </section>
+
+
+<script>
+
+/* =========================================================
+GET SELECTED GIFT FROM URL
+========================================================= */
+
+const params = new URLSearchParams(window.location.search);
+
+const giftImage = params.get("gift");
+
+const giftName = params.get("name");
+
+
+/* =========================================================
+DISPLAY SELECTED GIFT
+========================================================= */
+
+const imageElement =
+document.getElementById("giftImage");
+
+const nameElement =
+document.getElementById("giftName");
+
+
+if(giftImage){
+
+    imageElement.src = giftImage;
+
+}else{
+
+    imageElement.src = "qlogo.png";
+
+}
+
+
+if(giftName){
+
+    nameElement.textContent = giftName;
+
+}else{
+
+    nameElement.textContent = "Selected Prize";
+
+}
+
+
+/* =========================================================
+UPDATE PAGE TITLE
+========================================================= */
+
+if(giftName){
+
+    document.title =
+    giftName + " | Prize Eligibility | QUIZCANO";
+
+}
+
+</script>
 
 </body>
 
